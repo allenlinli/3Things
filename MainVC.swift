@@ -18,5 +18,10 @@ class MainVC: UIViewController {
             menuButton.setBackgroundImage(image, forState: UIControlState.Highlighted)
         }
         
+        menuButton.addTarget(self, action: #selector(menuButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func menuButtonPressed() {
+        self.slideMenuController()?.openLeft()
     }
 }
