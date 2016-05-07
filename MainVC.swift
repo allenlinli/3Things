@@ -12,15 +12,13 @@ class MainVC: UIViewController {
 
     @IBOutlet weak var menuButton: UIButton!
     
+    var tapGestureRecognizer: UITapGestureRecognizer?
+    
     override func viewDidLoad() {
-        
-        //FIXME: use UIGrestureRecognizer instead
-        let testButton = UIButton(frame: view.frame)
-        view.addSubview(testButton)
-        testButton.backgroundColor = UIColor.brownColor()
-        testButton.titleLabel?.text = "Add Photo"
-        testButton.addTarget(self, action: #selector(addPhotoAction), forControlEvents: UIControlEvents.TouchUpInside)
-        view.sendSubviewToBack(testButton)
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPhotoAction))
+        if let t = tapGestureRecognizer {
+            view.addGestureRecognizer(t)
+        }
         
         view.backgroundColor = UIColor.grayColor()
         
