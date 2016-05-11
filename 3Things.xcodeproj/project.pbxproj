@@ -16,6 +16,8 @@
 		E9D339351CDB341E006225BF /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D339341CDB341E006225BF /* ContainerViewController.swift */; };
 		E9D339371CDB3C56006225BF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D339361CDB3C56006225BF /* MainVC.swift */; };
 		E9D339391CDB3C6D006225BF /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D339381CDB3C6D006225BF /* MenuVC.swift */; };
+		E9E5544D1CE2DD9200893A69 /* PhotoPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5544C1CE2DD9200893A69 /* PhotoPageVC.swift */; };
+		E9E554501CE2F5B200893A69 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5544F1CE2F5B200893A69 /* PhotoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		E9D339341CDB341E006225BF /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		E9D339361CDB3C56006225BF /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = ../MainVC.swift; sourceTree = "<group>"; };
 		E9D339381CDB3C6D006225BF /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		E9E5544C1CE2DD9200893A69 /* PhotoPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPageVC.swift; sourceTree = "<group>"; };
+		E9E5544F1CE2F5B200893A69 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		FBAA40CB030960CE4B1AFCF6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,10 +106,9 @@
 				E9D339341CDB341E006225BF /* ContainerViewController.swift */,
 				E9D339381CDB3C6D006225BF /* MenuVC.swift */,
 				E9D339361CDB3C56006225BF /* MainVC.swift */,
-				E9D338DE1CDB0F1F006225BF /* Main.storyboard */,
-				E9D338E11CDB0F1F006225BF /* Assets.xcassets */,
-				E9D338E31CDB0F1F006225BF /* LaunchScreen.storyboard */,
-				E9D338E61CDB0F1F006225BF /* Info.plist */,
+				E9E5544C1CE2DD9200893A69 /* PhotoPageVC.swift */,
+				E9E5544F1CE2F5B200893A69 /* PhotoVC.swift */,
+				E9E5544E1CE2DFFB00893A69 /* Supporting Files */,
 			);
 			path = 3Things;
 			sourceTree = "<group>";
@@ -124,6 +127,17 @@
 			children = (
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		E9E5544E1CE2DFFB00893A69 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9D338DE1CDB0F1F006225BF /* Main.storyboard */,
+				E9D338E11CDB0F1F006225BF /* Assets.xcassets */,
+				E9D338E31CDB0F1F006225BF /* LaunchScreen.storyboard */,
+				E9D338E61CDB0F1F006225BF /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F2152644D3DA74AE88BDA71E /* Frameworks */ = {
@@ -287,9 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D339351CDB341E006225BF /* ContainerViewController.swift in Sources */,
+				E9E5544D1CE2DD9200893A69 /* PhotoPageVC.swift in Sources */,
 				E9D339391CDB3C6D006225BF /* MenuVC.swift in Sources */,
 				E9D339371CDB3C56006225BF /* MainVC.swift in Sources */,
 				E9D338DB1CDB0F1F006225BF /* AppDelegate.swift in Sources */,
+				E9E554501CE2F5B200893A69 /* PhotoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

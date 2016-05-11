@@ -15,6 +15,7 @@ class MainVC: UIViewController
     @IBOutlet weak var menuButton: UIButton!
     
     var tapGestureRecognizer: UITapGestureRecognizer?
+    var photoPageVC: PhotoPageVC?
     
     override func viewDidLoad()
     {
@@ -27,6 +28,13 @@ class MainVC: UIViewController
         view.backgroundColor = UIColor.grayColor()
         
         menuButton.addTarget(self, action: #selector(menuButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let photoPageVC = segue.destinationViewController as? PhotoPageVC {
+            self.photoPageVC = photoPageVC
+//            pageVC?.tutorialDelegate = self
+        }
     }
     
     func menuButtonPressed()
@@ -50,6 +58,7 @@ class MainVC: UIViewController
             {
             (action: UIAlertAction!) -> Void in
             
+    
         }))
         alert.addAction(UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler:
             {
@@ -83,3 +92,17 @@ extension MainVC: ImagePickerDelegate
         
     }
 }
+
+//extension PhotoPageVC: UIP {
+//    
+//    func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
+//                                    didUpdatePageCount count: Int) {
+//        pageControl.numberOfPages = count
+//    }
+//    
+//    func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
+//                                    didUpdatePageIndex index: Int) {
+//        pageControl.currentPage = index
+//    }
+//    
+//}

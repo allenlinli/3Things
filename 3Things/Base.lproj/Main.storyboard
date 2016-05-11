@@ -35,6 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vou-bT-KGg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="fHo-PS-5Im" kind="embed" id="0Ij-vi-WT7"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-YW-N3D">
                                 <rect key="frame" x="20" y="536" width="44" height="44"/>
                                 <constraints>
@@ -57,9 +63,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NiD-bi-yL7" firstAttribute="centerX" secondItem="70a-eE-cWo" secondAttribute="centerX" id="8Nz-3s-JrL"/>
+                            <constraint firstItem="Vou-bT-KGg" firstAttribute="top" secondItem="70a-eE-cWo" secondAttribute="topMargin" id="AfB-zR-7le"/>
                             <constraint firstItem="KEh-7r-xd5" firstAttribute="top" secondItem="hD4-YW-N3D" secondAttribute="bottom" constant="20" id="Kuf-KN-fYP"/>
                             <constraint firstItem="hD4-YW-N3D" firstAttribute="leading" secondItem="70a-eE-cWo" secondAttribute="leadingMargin" id="OdL-9h-6Dk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vou-bT-KGg" secondAttribute="trailing" constant="-20" id="YcM-4C-5e4"/>
+                            <constraint firstItem="KEh-7r-xd5" firstAttribute="top" secondItem="Vou-bT-KGg" secondAttribute="bottom" id="kob-vk-yuC"/>
                             <constraint firstItem="NiD-bi-yL7" firstAttribute="centerY" secondItem="70a-eE-cWo" secondAttribute="centerY" id="rPo-U5-nLy"/>
+                            <constraint firstItem="Vou-bT-KGg" firstAttribute="leading" secondItem="70a-eE-cWo" secondAttribute="leadingMargin" constant="-20" id="xdw-kb-wcs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -87,6 +97,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxC-vP-DNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="387"/>
+        </scene>
+        <!--Photo PageVC-->
+        <scene sceneID="Vl0-Ee-Idk">
+            <objects>
+                <viewController id="fHo-PS-5Im" customClass="PhotoPageVC" customModule="_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bcF-uP-1vg"/>
+                        <viewControllerLayoutGuide type="bottom" id="rmn-gp-4wm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sdp-2J-Z0G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PqB-QQ-bN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088" y="1227"/>
+        </scene>
+        <!--PhotoVC-->
+        <scene sceneID="jTf-WI-ypG">
+            <objects>
+                <viewController storyboardIdentifier="PhotoVCID" id="Cqo-eX-Gmd" customClass="PhotoVC" customModule="_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="woG-jM-DBN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pta-Ag-O69"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9nt-IL-0S4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmS-IW-q61">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="rmS-IW-q61" id="dIL-yX-wuK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xix-fy-BfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789" y="1227"/>
         </scene>
     </scenes>
     <resources>
