@@ -10,12 +10,35 @@ import UIKit
 
 class PhotoVC: UIViewController {
 
+    
     @IBOutlet weak var photoImageView: UIImageView!
+    var photoName: String?
     
-    var photoName: String!
-    var photoIndex: Int!
+    override func viewDidLoad() {
+        super.viewDidLoad()
     
+        let photoFilePath = getPhotoFilePathWith(photoName!)
+        photoImageView.image = UIImage(contentsOfFile: photoFilePath) ?? nil
+    }
     
+    func addPhoto(photo: UIImage?) {
+        if let photo = photo, data = UIImagePNGRepresentation(photo)
+        {
+            let filePath = getPhotoFilePathWith(photoName!)
+            data.writeToFile(filePath, atomically: true)
+            photoImageView.image = photo
+        }
+    }
     
-    
+    func deletePhoto() {
+        let photoFilePath = getPhotoFilePathWith(photoName!)
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            photoImageView.image = nil
+            try fileManager.removeItemAtPath(photoFilePath)
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+    }
 }
