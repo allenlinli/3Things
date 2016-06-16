@@ -21,6 +21,10 @@ class PhotoVC: UIViewController {
         photoImageView.image = UIImage(contentsOfFile: photoFilePath) ?? nil
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func addPhoto(photo: UIImage?) {
         if let photo = photo, data = UIImagePNGRepresentation(photo)
         {

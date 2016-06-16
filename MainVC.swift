@@ -114,6 +114,10 @@ class MainVC: UIViewController
         
         self.presentViewController(addPhotoActionController, animated: true, completion: nil)
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
 
 extension MainVC: ImagePickerDelegate
@@ -130,9 +134,7 @@ extension MainVC: ImagePickerDelegate
             vc.addPhoto(photo)
         }
         
-        imagePickerController?.dismissViewControllerAnimated(true, completion: {
-            
-        })
+        imagePickerController?.dismissViewControllerAnimated(true, completion:nil)
     }
     
     func cancelButtonDidPress()

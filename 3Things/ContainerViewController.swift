@@ -21,4 +21,8 @@ class ContainerViewController: SlideMenuController {
         super.awakeFromNib()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
 }
