@@ -24,5 +24,4 @@ class ContainerViewController: SlideMenuController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
 }

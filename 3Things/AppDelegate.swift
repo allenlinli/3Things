@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
         pageControl.backgroundColor = UIColor.clearColor()
         
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .None) 
-        
         return true
     }
 }
