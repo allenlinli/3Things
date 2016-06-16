@@ -11,17 +11,16 @@ import UIKit
 
 class ContainerViewController: SlideMenuController {
     
-    override func awakeFromNib() {
-        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MainVCID") {
+    override func awakeFromNib()
+    {
+        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavVCID")
+        {
             self.mainViewController = controller
         }
-        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MenuVCID") {
+        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MenuVCID")
+        {
             self.leftViewController = controller
         }
         super.awakeFromNib()
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
     }
 }

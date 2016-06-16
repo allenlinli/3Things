@@ -26,7 +26,7 @@
         <!--MainVC-->
         <scene sceneID="bIa-9s-zBD">
             <objects>
-                <viewController storyboardIdentifier="MainVCID" id="Sq0-zc-eqw" customClass="MainVC" customModule="_Things" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sq0-zc-eqw" customClass="MainVC" customModule="_Things" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uOL-yi-AMY"/>
                         <viewControllerLayoutGuide type="bottom" id="KEh-7r-xd5"/>
@@ -41,25 +41,34 @@
                                     <segue destination="Eey-dm-zRt" kind="embed" id="dHS-xE-Ohb"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-YW-N3D">
-                                <rect key="frame" x="20" y="536" width="44" height="44"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vou-bT-KGg" firstAttribute="top" secondItem="70a-eE-cWo" secondAttribute="topMargin" id="AfB-zR-7le"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vou-bT-KGg" secondAttribute="trailing" constant="-20" id="YcM-4C-5e4"/>
+                            <constraint firstItem="KEh-7r-xd5" firstAttribute="top" secondItem="Vou-bT-KGg" secondAttribute="bottom" id="kob-vk-yuC"/>
+                            <constraint firstItem="Vou-bT-KGg" firstAttribute="leading" secondItem="70a-eE-cWo" secondAttribute="leadingMargin" constant="-20" id="xdw-kb-wcs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zaw-L8-WpB">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ALH-ww-5Ch">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hD4-YW-N3D">
+                                <rect key="frame" x="20" y="0.0" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="IQr-fC-I7K"/>
                                     <constraint firstAttribute="height" constant="44" id="k42-Al-q3L"/>
                                 </constraints>
                                 <state key="normal" image="Menu Button"/>
                             </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Vou-bT-KGg" firstAttribute="top" secondItem="70a-eE-cWo" secondAttribute="topMargin" id="AfB-zR-7le"/>
-                            <constraint firstItem="KEh-7r-xd5" firstAttribute="top" secondItem="hD4-YW-N3D" secondAttribute="bottom" constant="20" id="Kuf-KN-fYP"/>
-                            <constraint firstItem="hD4-YW-N3D" firstAttribute="leading" secondItem="70a-eE-cWo" secondAttribute="leadingMargin" id="OdL-9h-6Dk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Vou-bT-KGg" secondAttribute="trailing" constant="-20" id="YcM-4C-5e4"/>
-                            <constraint firstItem="KEh-7r-xd5" firstAttribute="top" secondItem="Vou-bT-KGg" secondAttribute="bottom" id="kob-vk-yuC"/>
-                            <constraint firstItem="Vou-bT-KGg" firstAttribute="leading" secondItem="70a-eE-cWo" secondAttribute="leadingMargin" constant="-20" id="xdw-kb-wcs"/>
-                        </constraints>
-                    </view>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TfA-uL-0k6">
+                            <color key="tintColor" red="1" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editButtonPressed:" destination="Sq0-zc-eqw" id="Ii3-oj-nYl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="Vou-bT-KGg" id="GIl-6S-EbD"/>
                         <outlet property="menuButton" destination="hD4-YW-N3D" id="LGE-or-5m7"/>
@@ -67,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsm-Lj-CUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="387"/>
+            <point key="canvasLocation" x="1900" y="387"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Drx-yc-eET">
@@ -103,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxC-vP-DNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="387"/>
+            <point key="canvasLocation" x="2560" y="387"/>
         </scene>
         <!--PhotoVC-->
         <scene sceneID="jTf-WI-ypG">
@@ -136,6 +145,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xix-fy-BfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="1159"/>
+        </scene>
+        <!--Main Navigation Controller-->
+        <scene sceneID="ybi-OS-G3v">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavVCID" automaticallyAdjustsScrollViewInsets="NO" id="Fit-ju-azF" customClass="MainNavigationController" customModule="_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r3l-pN-pgD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sq0-zc-eqw" kind="relationship" relationship="rootViewController" id="bgv-pQ-77g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HoB-kD-Arr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088" y="387"/>
         </scene>
     </scenes>
     <resources>

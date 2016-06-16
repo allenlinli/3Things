@@ -38,13 +38,9 @@ class MainVC: UIViewController
     {
         super.viewDidLoad()
         
-        menuButton.addTarget(self, action: #selector(menuButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        edgesForExtendedLayout = UIRectEdge.None
         
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPhotoAction))
-        if let t = tapGestureRecognizer
-        {
-            view.addGestureRecognizer(t)
-        }
+        menuButton.addTarget(self, action: #selector(menuButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         
         photoPageVC.setLayouter(SCPageLayouter(), animated: false, completion: nil)
 //        photoPageVC.easingFunction = SCEasingFunction(type: SCEasingFunctionType.Linear)
@@ -77,7 +73,7 @@ class MainVC: UIViewController
         self.slideMenuController()?.openLeft()
     }
     
-    func addPhotoAction()
+    @IBAction func editButtonPressed(sender: UIBarButtonItem)
     {
         let addPhotoActionController = UIAlertController(title: "3Things", message: "What's the 3 most important things on your mind?", preferredStyle: UIAlertControllerStyle.ActionSheet)
 
