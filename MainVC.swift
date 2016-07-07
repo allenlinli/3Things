@@ -25,6 +25,8 @@ class MainVC: UIViewController
     
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     let photosNames = ["Thing1", "Thing2", "Thing3"]
     
     var tapGestureRecognizer: UITapGestureRecognizer?
@@ -33,6 +35,8 @@ class MainVC: UIViewController
     
     var photoPageVC : SCPageViewController = SCPageViewController()
     var viewControllers = [UIViewController?]()
+    
+    var willShowPageIndex: UInt! = 0
     
     override func viewDidLoad()
     {
@@ -47,7 +51,6 @@ class MainVC: UIViewController
         
         photoPageVC.dataSource = self
         photoPageVC.delegate = self
-        
         
         for i in 0..<3
         {
@@ -153,6 +156,20 @@ extension MainVC: SCPageViewControllerDataSource, SCPageViewControllerDelegate
         }
         
         return viewController
+    }
+    
+    
+    func pageViewController(pageViewController: SCPageViewController!, didHideViewController controller: UIViewController!, atIndex index: UInt)
+    {
+        if index != willShowPageIndex
+        {
+            pageControl.currentPage = Int(willShowPageIndex!)
+        }
+    }
+    
+    func pageViewController(pageViewController: SCPageViewController!, didShowViewController controller: UIViewController!, atIndex index: UInt)
+    {
+        willShowPageIndex = index
     }
 }
 
