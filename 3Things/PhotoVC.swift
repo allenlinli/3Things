@@ -14,11 +14,17 @@ class PhotoVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     var photoName: String?
     
+    var introLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         let photoFilePath = getPhotoFilePathWith(photoName!)
         photoImageView.image = UIImage(contentsOfFile: photoFilePath) ?? nil
+        
+        introLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 320.0, height: 44.0)))
+        view.addSubview(introLabel!)
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {
