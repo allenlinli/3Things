@@ -15,7 +15,7 @@
  */
 
 import UIKit
-import ImagePicker
+//import ImagePicker
 import SCPageViewController
 
 class MainVC: UIViewController
@@ -31,7 +31,7 @@ class MainVC: UIViewController
     
     var tapGestureRecognizer: UITapGestureRecognizer?
     
-    var imagePickerController: ImagePickerController?
+//    var imagePickerController: ImagePickerController?
     
     var photoPageVC : SCPageViewController = SCPageViewController()
     var viewControllers = [UIViewController?]()
@@ -80,67 +80,12 @@ class MainVC: UIViewController
     
     @IBAction func editButtonPressed(sender: UIBarButtonItem)
     {
-        //Let the MainVC do all the photo actions instead of PhotoVC. It means photo actions is a whole action, not an action by each VC.
-        let addPhotoActionController = UIAlertController(title: "3Things", message: "What's the 3 most important things on your mind?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-
-        weak var wSelf = self
-
-        addPhotoActionController.addAction(UIAlertAction(title: "Add Photo", style: UIAlertActionStyle.Default, handler:
-        {
-                (action: UIAlertAction!) -> Void in
-                let lImagePickerController = ImagePickerController()
-                wSelf?.imagePickerController = lImagePickerController
-                lImagePickerController.delegate = wSelf
-                lImagePickerController.imageLimit = 1
-            wSelf?.presentViewController(lImagePickerController, animated: true, completion: nil )
-        }))
-
-        addPhotoActionController.addAction(UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler:
-        {
-                (action: UIAlertAction!) -> Void in
-            let deletePhotoActionController = UIAlertController(title: "Alert", message: "Are you sure to delete this photo?", preferredStyle: UIAlertControllerStyle.Alert)
-
-            deletePhotoActionController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-            deletePhotoActionController.addAction(UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler:
-                {
-                    (action: UIAlertAction!) -> Void in
-                    let vc = wSelf?.viewControllers[Int(wSelf!.photoPageVC.currentPage)] as! PhotoVC
-                    vc.deletePhoto()
-            }))
-            wSelf!.presentViewController(deletePhotoActionController, animated: true, completion: nil)
-        }))
-
-        addPhotoActionController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil
-            ))
-        
-        self.presentViewController(addPhotoActionController, animated: true, completion: nil)
+        let photoVC = viewControllers[Int(photoPageVC.currentPage)] as! PhotoVC
+        photoVC.editButtonPressed(sender)
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-}
-
-extension MainVC: ImagePickerDelegate
-{
-    func wrapperDidPress(images: [UIImage])
-    {
-        
-    }
-    
-    func doneButtonDidPress(images: [UIImage])
-    {
-        if let photo = images.first {
-            let vc = viewControllers[Int(photoPageVC.currentPage)] as! PhotoVC
-            vc.addPhoto(photo)
-        }
-        
-        imagePickerController?.dismissViewControllerAnimated(true, completion:nil)
-    }
-    
-    func cancelButtonDidPress()
-    {
-        
     }
 }
 
@@ -173,12 +118,6 @@ extension MainVC: SCPageViewControllerDataSource, SCPageViewControllerDelegate
     {
         willShowPageIndex = index
     }
-}
-
-// MARK: Photo File Path methods
-func getPhotoFilePathWith(photoName: String) -> String
-{
-    return (getDocumentsDirectory() as NSString).stringByAppendingPathComponent(photoName).stringByAppendingString(".png")
 }
 
 

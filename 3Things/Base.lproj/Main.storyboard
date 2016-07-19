@@ -147,6 +147,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Add The First Thing"/>
+                                        <connections>
+                                            <action selector="addPhotoButtonPressed:" destination="Cqo-eX-Gmd" eventType="touchUpInside" id="zhW-XG-8xY"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's The 3 Things on Your Mind?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJU-Fq-KD3">
                                         <rect key="frame" x="100" y="256" width="400" height="88"/>
@@ -185,7 +188,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addThingButton" destination="uzo-86-vd2" id="YcA-Tt-9VW"/>
+                        <outlet property="addPhotoButton" destination="uzo-86-vd2" id="m1U-ib-upl"/>
                         <outlet property="introView" destination="tyH-Fs-kVE" id="mQP-72-vIp"/>
                         <outlet property="photoImageView" destination="QlM-Rc-Zwg" id="Bbw-LC-rMo"/>
                     </connections>
