@@ -11,19 +11,16 @@ import UIKit
 class PhotoVC: UIViewController {
 
     
+    @IBOutlet weak var introView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var addThingButton: UIButton!
     var photoName: String?
-    
     var introLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        let photoFilePath = getPhotoFilePathWith(photoName!)
-        photoImageView.image = UIImage(contentsOfFile: photoFilePath) ?? nil
-        
-        introLabel = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 320.0, height: 44.0)))
-        view.addSubview(introLabel!)
+        view.clipsToBounds = true
         
     }
     

@@ -47,20 +47,22 @@ class MainVC: UIViewController
         menuButton.addTarget(self, action: #selector(menuButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         
         photoPageVC.setLayouter(SCPageLayouter(), animated: false, completion: nil)
-//        photoPageVC.easingFunction = SCEasingFunction(type: SCEasingFunctionType.Linear)
         
         photoPageVC.dataSource = self
         photoPageVC.delegate = self
         
+        let array = [UIColor.redColor(),UIColor.orangeColor(),UIColor.yellowColor()]
         for i in 0..<3
         {
             let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PhotoVCID") as! PhotoVC
             photoVC.photoName = photosNames[i]
-
+            photoVC.view.backgroundColor = array[i]
             viewControllers.append(photoVC)
         }
         
         photoPageVC.reloadData()
+        
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -78,6 +80,7 @@ class MainVC: UIViewController
     
     @IBAction func editButtonPressed(sender: UIBarButtonItem)
     {
+        //Let the MainVC do all the photo actions instead of PhotoVC. It means photo actions is a whole action, not an action by each VC.
         let addPhotoActionController = UIAlertController(title: "3Things", message: "What's the 3 most important things on your mind?", preferredStyle: UIAlertControllerStyle.ActionSheet)
 
         weak var wSelf = self
@@ -103,7 +106,6 @@ class MainVC: UIViewController
                     (action: UIAlertAction!) -> Void in
                     let vc = wSelf?.viewControllers[Int(wSelf!.photoPageVC.currentPage)] as! PhotoVC
                     vc.deletePhoto()
-                    
             }))
             wSelf!.presentViewController(deletePhotoActionController, animated: true, completion: nil)
         }))

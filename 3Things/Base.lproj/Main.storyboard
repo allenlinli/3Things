@@ -60,7 +60,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zaw-L8-WpB">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ALH-ww-5Ch">
+                        <barButtonItem key="leftBarButtonItem" id="ALH-ww-5Ch">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hD4-YW-N3D">
                                 <rect key="frame" x="20" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,19 +136,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-Fs-kVE" userLabel="IntroView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzo-86-vd2">
+                                        <rect key="frame" x="210" y="388" width="180" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="2Do-j8-9wU"/>
+                                            <constraint firstAttribute="height" constant="34" id="qOU-sE-0RV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Add The First Thing"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's The 3 Things on Your Mind?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJU-Fq-KD3">
+                                        <rect key="frame" x="100" y="256" width="400" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="400" id="ENZ-gR-ePW"/>
+                                            <constraint firstAttribute="height" constant="88" id="XnO-BY-mRg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="1" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pJU-Fq-KD3" firstAttribute="centerY" secondItem="tyH-Fs-kVE" secondAttribute="centerY" id="06c-wq-z2Y"/>
+                                    <constraint firstItem="uzo-86-vd2" firstAttribute="centerX" secondItem="tyH-Fs-kVE" secondAttribute="centerX" id="NeU-iF-Yex"/>
+                                    <constraint firstItem="pJU-Fq-KD3" firstAttribute="centerX" secondItem="tyH-Fs-kVE" secondAttribute="centerX" id="jkM-yW-trh"/>
+                                    <constraint firstItem="uzo-86-vd2" firstAttribute="top" secondItem="pJU-Fq-KD3" secondAttribute="bottom" constant="44" id="w5f-RE-Npp"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QlM-Rc-Zwg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QlM-Rc-Zwg" firstAttribute="leading" secondItem="9nt-IL-0S4" secondAttribute="leadingMargin" constant="-20" id="E7j-iT-3Nk"/>
+                            <constraint firstItem="tyH-Fs-kVE" firstAttribute="bottom" secondItem="QlM-Rc-Zwg" secondAttribute="bottom" id="Fdh-St-AAj"/>
+                            <constraint firstItem="tyH-Fs-kVE" firstAttribute="leading" secondItem="QlM-Rc-Zwg" secondAttribute="leading" id="MYK-IF-oCy"/>
                             <constraint firstItem="Pta-Ag-O69" firstAttribute="top" secondItem="QlM-Rc-Zwg" secondAttribute="bottom" id="OKb-Cr-8dE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QlM-Rc-Zwg" secondAttribute="trailing" constant="-20" id="Xoc-bP-OiQ"/>
+                            <constraint firstItem="tyH-Fs-kVE" firstAttribute="trailing" secondItem="QlM-Rc-Zwg" secondAttribute="trailing" id="YfC-Q1-cmK"/>
+                            <constraint firstItem="tyH-Fs-kVE" firstAttribute="top" secondItem="QlM-Rc-Zwg" secondAttribute="top" id="aHH-BX-OJn"/>
                             <constraint firstItem="QlM-Rc-Zwg" firstAttribute="top" secondItem="9nt-IL-0S4" secondAttribute="topMargin" id="r61-zS-H3k"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addThingButton" destination="uzo-86-vd2" id="YcA-Tt-9VW"/>
+                        <outlet property="introView" destination="tyH-Fs-kVE" id="mQP-72-vIp"/>
                         <outlet property="photoImageView" destination="QlM-Rc-Zwg" id="Bbw-LC-rMo"/>
                     </connections>
                 </viewController>
