@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -36,18 +36,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vou-bT-KGg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="Eey-dm-zRt" kind="embed" id="dHS-xE-Ohb"/>
-                                </connections>
-                            </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="am8-Zg-dEm">
                                 <rect key="frame" x="217" y="543" width="167" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="167" id="xyH-OW-6Jk"/>
                                 </constraints>
                             </pageControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vou-bT-KGg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Eey-dm-zRt" kind="embed" id="dHS-xE-Ohb"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -60,6 +60,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zaw-L8-WpB">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" id="ALH-ww-5Ch">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hD4-YW-N3D">
                                 <rect key="frame" x="20" y="0.0" width="44" height="44"/>
@@ -71,6 +72,16 @@
                                 <state key="normal" image="Menu Button"/>
                             </button>
                         </barButtonItem>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" minimumFontSize="17" id="pfs-wn-5K0">
+                            <rect key="frame" x="114" y="7" width="372" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="titlePressed:" destination="Sq0-zc-eqw" eventType="touchUpInside" id="zLv-8o-eGi"/>
+                            </connections>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TfA-uL-0k6">
                             <color key="tintColor" red="1" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -82,6 +93,7 @@
                         <outlet property="containerView" destination="Vou-bT-KGg" id="GIl-6S-EbD"/>
                         <outlet property="menuButton" destination="hD4-YW-N3D" id="LGE-or-5m7"/>
                         <outlet property="pageControl" destination="am8-Zg-dEm" id="uAi-xS-Ckw"/>
+                        <outlet property="titleTextField" destination="pfs-wn-5K0" id="mwP-DF-SBK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsm-Lj-CUG" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -20,18 +20,23 @@ import SCPageViewController
 
 class MainVC: UIViewController
 {
+    enum PhotoKeys: String {
+        case Thing1 = "Thing1"
+        case Thing2 = "Thing2"
+        case Thing3 = "Thing3"
+        
+        static let allValues = [Thing1, Thing2, Thing3]
+    }
 
     @IBOutlet weak var menuButton: UIButton!
+    
+    @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var pageControl: UIPageControl!
     
-    let photosNames = ["Thing1", "Thing2", "Thing3"]
-    
     var tapGestureRecognizer: UITapGestureRecognizer?
-    
-//    var imagePickerController: ImagePickerController?
     
     var photoPageVC : SCPageViewController = SCPageViewController()
     var viewControllers = [UIViewController?]()
@@ -55,7 +60,7 @@ class MainVC: UIViewController
         for i in 0..<3
         {
             let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PhotoVCID") as! PhotoVC
-            photoVC.photoName = photosNames[i]
+            photoVC.photoName = PhotoKeys.allValues[i].rawValue
             photoVC.view.backgroundColor = array[i]
             viewControllers.append(photoVC)
         }
@@ -63,6 +68,15 @@ class MainVC: UIViewController
         photoPageVC.reloadData()
         
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        titleTextField.delegate = self
+    }
+    
+    func dismissKeyboard() {
+        titleTextField.endEditing(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -85,6 +99,15 @@ class MainVC: UIViewController
     }
     
     override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+}
+
+extension MainVC: UITextFieldDelegate
+{
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        titleTextField.endEditing(true)
         return true
     }
 }
@@ -118,12 +141,4 @@ extension MainVC: SCPageViewControllerDataSource, SCPageViewControllerDelegate
     {
         willShowPageIndex = index
     }
-}
-
-
-func getDocumentsDirectory() -> String
-{
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let documentsDirectory = paths[0]
-    return documentsDirectory
 }

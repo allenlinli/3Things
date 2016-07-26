@@ -126,3 +126,10 @@ func getPhotoFilePathWith(photoName: String) -> String
 {
     return (getDocumentsDirectory() as NSString).stringByAppendingPathComponent(photoName).stringByAppendingString(".png")
 }
+
+func getDocumentsDirectory() -> String
+{
+    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
