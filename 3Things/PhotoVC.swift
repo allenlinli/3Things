@@ -22,6 +22,10 @@ class PhotoVC: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //read photos
+        let photoFilePath = getPhotoFilePath(withPhotoName: photoName)
+        photoImageView.image = UIImage(contentsOfFile: photoFilePath)
+        
         view.clipsToBounds = true
     }
     
@@ -35,11 +39,11 @@ class PhotoVC: UIViewController
     
     func editButtonPressed(sender: AnyObject)
     {
-        let addPhotoActionController = UIAlertController(title: "3Things", message: "What's the 3 most important things on your mind?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        // create a UIAlertController
+        let alert = UIAlertController(title: "3Things", message: "What's the 3 most important things on your mind?", preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         weak var wSelf = self
-        
-        addPhotoActionController.addAction(UIAlertAction(title: "Add Photo", style: UIAlertActionStyle.Default, handler:
+        alert.addAction(UIAlertAction(title: "Add Photo", style: UIAlertActionStyle.Default, handler:
             {
                 (action: UIAlertAction!) -> Void in
                 wSelf?.addPhoto()
@@ -47,9 +51,10 @@ class PhotoVC: UIViewController
         
         if photoImageView.image != nil
         {
-            addPhotoActionController.addAction(UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler:
+            alert.addAction(UIAlertAction(title: "Delete Photo", style: UIAlertActionStyle.Destructive, handler:
                 {
                     (action: UIAlertAction!) -> Void in
+                    //alert user before delete a photo
                     let deletePhotoActionController = UIAlertController(title: "Alert", message: "Are you sure to delete this photo?", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     deletePhotoActionController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
@@ -62,7 +67,7 @@ class PhotoVC: UIViewController
                                 assertionFailure()
                                 return
                             }
-                            let photoFilePath = getPhotoFilePathWith(lSelf.photoName)
+                            let photoFilePath = getPhotoFilePath(withPhotoName: lSelf.photoName)
                             let fileManager = NSFileManager.defaultManager()
                             do {
                                 wSelf?.photoImageView.image = nil
@@ -76,10 +81,10 @@ class PhotoVC: UIViewController
             }))
         }
         
-        addPhotoActionController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil
             ))
         
-        self.presentViewController(addPhotoActionController, animated: true, completion: nil)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func addPhoto()
@@ -106,7 +111,8 @@ extension PhotoVC: ImagePickerDelegate
         if let photo = images.first {
             if let data = UIImagePNGRepresentation(photo)
             {
-                let filePath = getPhotoFilePathWith(photoName!)
+                let filePath = getPhotoFilePath(withPhotoName: photoName!)
+                print(filePath)
                 data.writeToFile(filePath, atomically: true)
                 photoImageView.image = photo
             }
@@ -122,14 +128,9 @@ extension PhotoVC: ImagePickerDelegate
 }
 
 // MARK: Photo File Path methods
-func getPhotoFilePathWith(photoName: String) -> String
+func getPhotoFilePath(withPhotoName photoName: String) -> String
 {
-    return (getDocumentsDirectory() as NSString).stringByAppendingPathComponent(photoName).stringByAppendingString(".png")
-}
-
-func getDocumentsDirectory() -> String
-{
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let documentsDirectory = paths[0]
-    return documentsDirectory
+    let pathsArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let documentsDirectory = pathsArray[0] as NSString
+    return documentsDirectory.stringByAppendingPathComponent(photoName).stringByAppendingString(".png")
 }

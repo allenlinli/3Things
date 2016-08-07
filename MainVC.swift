@@ -20,7 +20,7 @@ import SCPageViewController
 
 class MainVC: UIViewController
 {
-    enum PhotoKeys: String {
+    enum PhotoKey: String {
         case Thing1 = "Thing1"
         case Thing2 = "Thing2"
         case Thing3 = "Thing3"
@@ -56,12 +56,10 @@ class MainVC: UIViewController
         photoPageVC.dataSource = self
         photoPageVC.delegate = self
         
-        let array = [UIColor.redColor(),UIColor.orangeColor(),UIColor.yellowColor()]
         for i in 0..<3
         {
             let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PhotoVCID") as! PhotoVC
-            photoVC.photoName = PhotoKeys.allValues[i].rawValue
-            photoVC.view.backgroundColor = array[i]
+            photoVC.photoName = PhotoKey.allValues[i].rawValue
             viewControllers.append(photoVC)
         }
         
