@@ -14,7 +14,7 @@ class PhotoVC: UIViewController
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var addPhotoButton: UIButton!
-    var photoName: String!
+    var photoVCIndex: Int!
     var introLabel: UILabel?
     
     var imagePickerController: ImagePickerController?
@@ -22,10 +22,9 @@ class PhotoVC: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //read photos
-        let photoFilePath = getPhotoFilePath(withPhotoName: photoName)
-        photoImageView.image = UIImage(contentsOfFile: photoFilePath)
-        
+        //load photos
+        let image = PhotoFileControler.sharedInstance.loadPhoto(withIndex: photoVCIndex)
+        photoImageView.image = image
         view.clipsToBounds = true
     }
     
@@ -67,15 +66,8 @@ class PhotoVC: UIViewController
                                 assertionFailure()
                                 return
                             }
-                            let photoFilePath = getPhotoFilePath(withPhotoName: lSelf.photoName)
-                            let fileManager = NSFileManager.defaultManager()
-                            do {
-                                wSelf?.photoImageView.image = nil
-                                try fileManager.removeItemAtPath(photoFilePath)
-                            }
-                            catch let error as NSError {
-                                print("Ooops! Something went wrong: \(error)")
-                            }
+                            PhotoFileControler.sharedInstance.deletePhoto(withIndex: lSelf.photoVCIndex)
+                            lSelf.photoImageView.image = nil
                     }))
                     wSelf!.presentViewController(deletePhotoActionController, animated: true, completion: nil)
             }))
@@ -108,14 +100,11 @@ extension PhotoVC: ImagePickerDelegate
     func doneButtonDidPress(images: [UIImage])
     {
         // did add photo
-        if let photo = images.first {
-            if let data = UIImagePNGRepresentation(photo)
-            {
-                let filePath = getPhotoFilePath(withPhotoName: photoName!)
-                print(filePath)
-                data.writeToFile(filePath, atomically: true)
-                photoImageView.image = photo
-            }
+        if let photo = images.first
+        {
+            // TODO: use block to asychronize adding photo. And do error handling by try catch, also.
+            PhotoFileControler.sharedInstance.savePhoto(withIndex: photoVCIndex, photo: photo)
+            photoImageView.image = photo
         }
         
         imagePickerController?.dismissViewControllerAnimated(true, completion:nil)
@@ -127,10 +116,10 @@ extension PhotoVC: ImagePickerDelegate
     }
 }
 
-// MARK: Photo File Path methods
-func getPhotoFilePath(withPhotoName photoName: String) -> String
-{
-    let pathsArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let documentsDirectory = pathsArray[0] as NSString
-    return documentsDirectory.stringByAppendingPathComponent(photoName).stringByAppendingString(".png")
-}
+
+
+
+
+
+
+

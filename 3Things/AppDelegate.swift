@@ -21,6 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
         pageControl.backgroundColor = UIColor.clearColor()
         
+//        //create photo for 
+//        if NSFileManager.defaultManager().fileExistsAtPath()
+//        
+//        // New Folder is your folder name
+//        NSError *error = nil;
+//        if (![[NSFileManager defaultManager] fileExistsAtPath:stringPath])
+//        [[NSFileManager defaultManager] createDirectoryAtPath:stringPath withIntermediateDirectories:NO attributes:nil error:&error];
+//        
+//        NSString *fileName = [stringPath stringByAppendingFormat:@"/image.jpg"];
+//        NSData *data = UIImageJPEGRepresentation(imageForShare, 1.0);
+//        [data writeToFile:fileName atomically:YES];
+        
+        
         return true
     }
 }

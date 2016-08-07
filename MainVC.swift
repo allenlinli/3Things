@@ -20,14 +20,6 @@ import SCPageViewController
 
 class MainVC: UIViewController
 {
-    enum PhotoKey: String {
-        case Thing1 = "Thing1"
-        case Thing2 = "Thing2"
-        case Thing3 = "Thing3"
-        
-        static let allValues = [Thing1, Thing2, Thing3]
-    }
-
     @IBOutlet weak var menuButton: UIButton!
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -56,10 +48,10 @@ class MainVC: UIViewController
         photoPageVC.dataSource = self
         photoPageVC.delegate = self
         
-        for i in 0..<3
+        for index in 0..<3
         {
             let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PhotoVCID") as! PhotoVC
-            photoVC.photoName = PhotoKey.allValues[i].rawValue
+            photoVC.photoVCIndex = index
             viewControllers.append(photoVC)
         }
         
