@@ -39,11 +39,52 @@ class PhotoFileControler
         }   
     }
     
+    func saveTitle(withIndex index: Int, title: String)
+    {
+        let path = filePath(forPhotoFileType: PhotoFileDataType.Title, withIndex: index)
+        do
+        {
+            try title.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+        }
+        catch
+        {
+            assert(false, "! title.writeToFile")
+        }
+    }
+    
+    func loadTitle(withIndex index: Int) -> String?
+    {
+        let path = filePath(forPhotoFileType: PhotoFileDataType.Title, withIndex: index)
+        do
+        {
+            let title = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            return title
+        }
+        catch
+        {
+            
+        }
+
+        return nil
+    }
+    
+    func deleteTitle(withIndex index: Int)
+    {
+        let path = filePath(forPhotoFileType: PhotoFileDataType.Title, withIndex: index)
+        let fileManager = NSFileManager.defaultManager()
+        do {
+            try fileManager.removeItemAtPath(path)
+        }
+        catch let error as NSError
+        {
+            assert(false,error.localizedDescription)
+        }
+    }
+    
     func filePath(forPhotoFileType type: PhotoFileDataType, withIndex: Int) -> String
     {
         let fileName = type.rawValue.stringByAppendingString(String(withIndex))
-        let pathsArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = pathsArray[0] as NSString
-        return documentsDirectory.stringByAppendingString(fileName)
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+        return documentsDirectory!.stringByAppendingString(fileName)
     }
 }

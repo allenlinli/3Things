@@ -19,11 +19,10 @@ enum PhotoKey: String
 
 enum PhotoFileDataType: String
 {
-    case ViewControlerIndex = "ViewControlerIndex"
     case Photo = "Photo"
-    case ViewControllerTitle = "VCTitle"
+    case Title = "Title"
     
-    static let allValues = [ViewControlerIndex, Photo, ViewControllerTitle]
+    static let allValues = [Photo, Title]
 }
 
 

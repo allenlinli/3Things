@@ -25,6 +25,9 @@ class PhotoVC: UIViewController
         //load photos
         let image = PhotoFileControler.sharedInstance.loadPhoto(withIndex: photoVCIndex)
         photoImageView.image = image
+        
+        self.title = PhotoFileControler.sharedInstance.loadTitle(withIndex: photoVCIndex)
+        
         view.clipsToBounds = true
     }
     

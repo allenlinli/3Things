@@ -35,6 +35,14 @@ class MainVC: UIViewController
     
     var willShowPageIndex: UInt! = 0
     
+    var currentPhotoVC: PhotoVC
+    {
+        get
+        {
+            return viewControllers[Int(photoPageVC.currentPage)] as! PhotoVC
+        }
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -63,6 +71,9 @@ class MainVC: UIViewController
         view.addGestureRecognizer(tap)
         
         titleTextField.delegate = self
+        
+        // FIXME:
+        titleTextField.hidden = true
     }
     
     func dismissKeyboard() {
@@ -97,6 +108,7 @@ extension MainVC: UITextFieldDelegate
 {
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
+        currentPhotoVC.title = textField.text
         titleTextField.endEditing(true)
         return true
     }
